@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Card } from "@/components/ui/card";
@@ -10,6 +10,8 @@ import { useI18n } from "@/lib/i18n";
 import { Info } from "lucide-react";
 import { toast } from "sonner";
 
+const createFileRoute = (_path: string) => (config: unknown) => config;
+
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-function AuthPage() {
+export function AuthPage() {
   const { t } = useI18n();
   return (
     <Layout>

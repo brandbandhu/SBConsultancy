@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,8 @@ import { useState } from "react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import heroImg from "@/assets/hero-documents.jpg";
 
+const createFileRoute = (_path: string) => (config: unknown) => config;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-function HomePage() {
+export function HomePage() {
   const { t, lang } = useI18n();
   const [searchOpen, setSearchOpen] = useState(false);
 

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Input } from "@/components/ui/input";
@@ -9,6 +8,8 @@ import { useI18n } from "@/lib/i18n";
 import { pdfBooks, documentList } from "@/lib/site-data";
 import { Search, BookOpen, Download, CheckCircle2 } from "lucide-react";
 import { useMemo, useState } from "react";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/pdf-books")({
   head: () => ({
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/pdf-books")({
   component: BooksPage,
 });
 
-function BooksPage() {
+export function BooksPage() {
   const { t, lang } = useI18n();
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("all");

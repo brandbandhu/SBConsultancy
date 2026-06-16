@@ -1,10 +1,13 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useI18n } from "@/lib/i18n";
-import { services } from "@/lib/site-data";
+import { services, type Service } from "@/lib/site-data";
 import { ArrowRight, CheckCircle2, Clock, IndianRupee, FileText, Upload } from "lucide-react";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
+const notFound = () => new Error("Not found");
 
 const documentDetails: Record<
   string,
@@ -260,8 +263,7 @@ export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetailPage,
 });
 
-function ServiceDetailPage() {
-  const { service } = Route.useLoaderData();
+export function ServiceDetailPage({ service }: { service: Service }) {
   const { t, lang } = useI18n();
   const details = documentDetails[service.slug];
 

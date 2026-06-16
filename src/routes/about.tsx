@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { useI18n } from "@/lib/i18n";
 import { ShieldCheck, Users, Heart, Target } from "lucide-react";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-function AboutPage() {
+export function AboutPage() {
   const { t } = useI18n();
   return (
     <Layout>

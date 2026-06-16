@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Card } from "@/components/ui/card";
@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { services } from "@/lib/site-data";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/pricing")({
   component: PricingPage,
 });
 
-function PricingPage() {
+export function PricingPage() {
   const { t, lang } = useI18n();
   return (
     <Layout>

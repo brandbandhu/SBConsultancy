@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   BarChart3, BookOpen, CreditCard, FileArchive, FileCheck2, FileText, Home,
@@ -10,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import logoUrl from "@/assets/logo.png";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -59,7 +60,7 @@ async function api(path: string, options: RequestInit = {}) {
   return res.json();
 }
 
-function AdminPage() {
+export function AdminPage() {
   const [token, setToken] = useState(() => localStorage.getItem("sb_admin_token") || "");
   const [admin, setAdmin] = useState<Row>(() => JSON.parse(localStorage.getItem("sb_admin") || "null"));
   const [active, setActive] = useState<MenuKey>("dashboard");

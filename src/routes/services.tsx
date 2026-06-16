@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Card } from "@/components/ui/card";
@@ -8,6 +8,8 @@ import { useI18n } from "@/lib/i18n";
 import { services } from "@/lib/site-data";
 import { ArrowRight, CheckCircle2, Search } from "lucide-react";
 import { useMemo, useState } from "react";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -21,7 +23,7 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-function ServicesPage() {
+export function ServicesPage() {
   const { t, lang } = useI18n();
   const [q, setQ] = useState("");
   const list = useMemo(() => {

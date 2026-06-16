@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,8 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
 import { z } from "zod";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -33,7 +34,7 @@ const schema = z.object({
   message: z.string().trim().min(10, "Tell us a bit more").max(1000),
 });
 
-function ContactPage() {
+export function ContactPage() {
   const { t, lang } = useI18n();
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
   const [busy, setBusy] = useState(false);

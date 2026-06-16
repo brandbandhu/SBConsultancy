@@ -1,9 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { services } from "@/lib/site-data";
+
+const createFileRoute = (_path: string) => (config: unknown) => config;
 
 export const Route = createFileRoute("/apply")({
   head: () => ({
@@ -15,7 +17,7 @@ export const Route = createFileRoute("/apply")({
   component: ApplyPage,
 });
 
-function ApplyPage() {
+export function ApplyPage() {
   const { t, lang } = useI18n();
   return (
     <Layout>
