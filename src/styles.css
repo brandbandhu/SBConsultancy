@@ -1,0 +1,134 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Open Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-saffron: var(--saffron);
+  --color-saffron-foreground: var(--saffron-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+
+  --shadow-soft: 0 1px 2px rgba(11, 58, 102, 0.04), 0 4px 16px rgba(11, 58, 102, 0.06);
+  --shadow-card: 0 1px 3px rgba(11, 58, 102, 0.06), 0 10px 30px -12px rgba(11, 58, 102, 0.18);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Navy #0B3A66 */
+  --primary: oklch(0.34 0.08 248);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: oklch(0.95 0.02 248);
+
+  /* Government Blue #1E5AA8 */
+  --secondary: oklch(0.49 0.13 256);
+  --secondary-foreground: oklch(0.99 0 0);
+
+  /* Saffron #F59E0B */
+  --saffron: oklch(0.78 0.16 65);
+  --saffron-foreground: oklch(0.2 0.04 250);
+
+  /* Success #16A34A */
+  --success: oklch(0.65 0.17 145);
+  --success-foreground: oklch(0.99 0 0);
+
+  /* Background #FFFFFF + light surface #F4F7FB */
+  --background: oklch(1 0 0);
+  --surface: oklch(0.975 0.008 250);
+  --foreground: oklch(0.27 0.03 260); /* #1F2937 */
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.5 0.02 255);
+
+  --accent: oklch(0.95 0.02 248);
+  --accent-foreground: var(--primary);
+
+  --destructive: oklch(0.6 0.22 28);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* Border grey #E5E7EB */
+  --border: oklch(0.92 0.005 255);
+  --input: oklch(0.92 0.005 255);
+  --ring: oklch(0.49 0.13 256);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 80rem;
+  @media (min-width: 768px) { padding-inline: 1.5rem; }
+  @media (min-width: 1280px) { padding-inline: 2rem; }
+}
+
+@utility section {
+  padding-block: 4rem;
+  @media (min-width: 768px) { padding-block: 6rem; }
+}
+
+@utility hero-gradient {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--secondary) 22%, transparent), transparent 60%),
+    linear-gradient(135deg, var(--primary) 0%, color-mix(in oklab, var(--primary) 70%, var(--secondary)) 100%);
+}
